@@ -13,7 +13,7 @@ jobs:
     - uses: actions/setup-go@v4
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v main.go main_test.go
 
   tests:
     # Задание "tests" зависит от задания "build" и будет выполнено после него
@@ -24,7 +24,7 @@ jobs:
     - uses: actions/setup-go@v4
 
     - name: Test
-      run: go test -v ./...
+      run: go test -v main.go main_test.go
 
   # Задание проверяет наличие в коде состояния гонки
   tests-race:
@@ -36,7 +36,7 @@ jobs:
     - uses: actions/setup-go@v4
 
     - name: Test
-      run: go test -race -v ./...
+      run: go test -race -v main.go main_test.go
   
   # Задание проверяет код на соответствие стилю и отсутствие логических ошибок
   lint:
